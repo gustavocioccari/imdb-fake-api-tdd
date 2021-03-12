@@ -3,7 +3,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     password_hash: DataTypes.STRING,
-    role: DataTypes.ENUM('admin', 'user')
+    role: DataTypes.ENUM('admin', 'user'),
+    is_active: DataTypes.BOOLEAN
   })
   return User
 }
