@@ -14,6 +14,11 @@ module.exports = {
       return res.status(401).json({ message: 'Invalid password' })
     }
 
+    if (user.is_active === false) {
+      await User.update({ is_active: true }, { where: { email } })
+      user.is_active = true
+    }
+
     return res.status(200).json({ user, token: user.generateToken() })
   }
 }
