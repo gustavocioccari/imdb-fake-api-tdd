@@ -4,7 +4,7 @@
   "description": "Estes documento README tem como objetivo fornecer as informações necessárias para realização do projeto de avaliação de candidatos.",
   "main": "index.js",
   "scripts": {
-    "pretest":"set \"NODE_ENV=test\" && sequelize db:migrate",
+    "pretest": "set \"NODE_ENV=test\" && sequelize db:migrate",
     "test": "set \"NODE_ENV=test\" && jest",
     "posttest": "set \"NODE_ENV=test\" && sequelize db:migrate:undo:all",
     "dev": "nodemon ./src/index.js --ignore __tests__"
@@ -18,9 +18,13 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/gustavocioccari/imdb-support-api#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "factory-girl": "^5.0.4",
+    "faker": "^5.4.0",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^8.5.1",
     "sequelize": "^6.5.0"
   },
@@ -33,6 +37,7 @@
     "jest": "^26.6.3",
     "nodemon": "^2.0.7",
     "sequelize-cli": "^6.2.0",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.0.2",
+    "supertest": "^6.1.3"
   }
 }
