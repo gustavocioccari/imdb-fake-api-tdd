@@ -32,5 +32,20 @@ module.exports = {
     } catch (err) {
       return console.log(err)
     }
+  },
+
+  async detail (req, res) {
+    const { id } = req.params
+    try {
+      const movie = await Movie.findByPk(id)
+
+      if (!movie) {
+        return res.status(400).send('The movie you want is not in the list')
+      }
+
+      return res.status(200).json({ movie })
+    } catch (err) {
+      return console.log(err)
+    }
   }
 }
