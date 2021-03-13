@@ -59,7 +59,7 @@ module.exports = {
       const userUpdated = await User.findOne({ where: { id: userId } })
       userUpdated.password_hash = undefined
 
-      return res.status(200).json({ userUpdated })
+      return res.status(200).send('User deactivated')
     } catch (err) {
       return console.log(err)
     }
