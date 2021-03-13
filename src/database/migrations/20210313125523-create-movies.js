@@ -19,7 +19,6 @@ module.exports = {
       },
       genre: {
         type: Sequelize.STRING,
-        unique: true,
         allowNull: false
       },
       actors: {
