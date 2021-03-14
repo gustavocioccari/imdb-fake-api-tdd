@@ -41,7 +41,7 @@ describe('User', () => {
     const response = await request(app)
       .patch('/user/deactivate')
       .set('Authorization', `Bearer ${user.generateToken()}`)
-    expect(response.body.userUpdated.is_active).toBe(false)
+    expect(response.text).toBe('User deactivated')
   })
 
   it('should not be able access patch /user with invalid token', async () => {
