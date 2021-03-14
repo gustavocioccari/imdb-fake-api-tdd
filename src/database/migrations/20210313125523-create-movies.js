@@ -21,10 +21,15 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      actors: {
-        type: Sequelize.ARRAY(Sequelize.STRING),
-        allowNull: false
-      }
+      actors: process.env.NODE_ENV === 'test'
+        ? {
+            type: Sequelize.STRING,
+            allowNull: false
+          }
+        : {
+            type: Sequelize.ARRAY(Sequelize.STRING),
+            allowNull: false
+          }
     })
   },
 
