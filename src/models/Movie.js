@@ -6,5 +6,12 @@ module.exports = (sequelize, DataTypes) => {
     actors: DataTypes.ARRAY(DataTypes.STRING)
   })
 
+  Movie.associate = (models) => {
+    Movie.hasMany(models.Vote, {
+      foreignKey: 'movie_id',
+      as: 'votes'
+    })
+  }
+
   return Movie
 }
