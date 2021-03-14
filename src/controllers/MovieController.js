@@ -1,5 +1,4 @@
-const { Movie } = require('../models')
-const { User } = require('../models')
+const { Movie, User, Vote } = require('../models')
 
 module.exports = {
   async index (req, res) {
@@ -37,13 +36,25 @@ module.exports = {
   async detail (req, res) {
     const { id } = req.params
     try {
+      const ratings = await Vote.findAll({
+        attributes: ['rating'],
+        where: { movie_id: id }
+      })
+
+      // [TODO]: Implement AVG using sequelize
+      let sum = 0
+      for (const rating of ratings) {
+        sum = sum + rating.rating
+      }
+      const avgRating = sum / ratings.length
+
       const movie = await Movie.findByPk(id)
 
       if (!movie) {
         return res.status(400).send('The movie you want is not in the list')
       }
 
-      return res.status(200).json({ movie })
+      return res.status(200).json({ movie, avgRating })
     } catch (err) {
       return console.log(err)
     }
